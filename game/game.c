@@ -1,6 +1,8 @@
 ﻿#include <stdio.h>
 #include<stdlib.h>
 
+#define SIZE 5000
+
 enum Location
 {
 	home,
@@ -29,29 +31,61 @@ struct Data
 void stat(struct Data data)
 {	
 	printf(" 날짜:%d\n", data.day);
-	printf("체력:%d 근력:%d 지력:%d 돈:%d\n", data.hp, data.str, data.intel, data.money);
+	printf("===============스탯===============\n");
+	printf("       체력:%d 근력:%d \n", data.hp, data.str);
+	printf("       지력:%d 돈  :%d \n", data.intel,data.money);
+	printf("==================================\n");
+
+
 }
+
+void output(const char* filename)
+{
+	FILE* file = fopen(filename, "r");
+
+	char buffer[SIZE] = { 0, };
+
+	fread(buffer, 1, SIZE, file);
+
+	printf("%s\n", buffer);
+
+	fclose(file);
+
+}
+
 
 void locate(enum Location loc)
 {
 	switch (loc) {
-	case home:printf("장소 - 집");
+	case home:output("home.TXT");
+		printf("장소 - 집");
 		break;
-	case street: printf("장소 - 거리");
+	case street:output("street.TXT");
+		printf("장소 - 거리");
 		break;
-	case conv:printf("장소 - 편의점");
+	case conv:output("conv.TXT");
+		printf("장소 - 편의점");
 		break;
-	case park: printf("장소 - 공원");
+	case park:output("park.txt");
+		printf("장소 - 공원");
 		break;
 	case burnart: printf("장소 - 대로변");
 		break;
-	case arcademy: printf("장소 - 학원");
+	case arcademy:output("arcademy.txt");
+		printf("장소 - 학원");
 		break;
 	case gym: printf("장소 - 헬스장");
 		break;
-	case inducom: printf("장소 - 산업단지");
+	case inducom:output("inducom.TXT");
+		printf("장소 - 산업단지");
 		break;
 	case boxcen: printf("장소 - 복싱 센터");
+		break;
+	case research:output("research.txt");
+		printf("장소 - 연구소");
+		break;
+	case food: output("food.txt");
+		printf("장소 - 음식점");
 		break;
 	}
 	printf(" /");
@@ -65,9 +99,9 @@ int main()
 {
 	struct Data player =
 	{
-		.hp = 10,
+		.hp = 100,
 		.str = 0,
-		.intel = 0,
+		.intel = 10000,
 		.money = 1000,
 		.day = 1
 	};
@@ -82,12 +116,7 @@ int main()
 	int end4 = 0;
 	int boxcoach = 0;
 
-	FILE* title = fopen("TITLE.TXT", "r");
-
-	char buffer[5000] = { 0, };
-	fread(buffer, 1, 5000, title);
-	printf("%s", buffer);
-	fclose(title);
+	output("TITLE.TXT");
 	printf("1.바로 게임 시작하기.\n");
 	printf("2.게임 설명 듣기.\n");
 	scanf_s("%d", &choice);
@@ -626,6 +655,7 @@ int main()
 						if (player.str < 300) {
 							printf("경기에서 패배했습니다...\n");
 							printf("체력이 1이 되었습니다.\n");
+							player.hp = 1;
 						}
 						else {
 							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
@@ -637,6 +667,7 @@ int main()
 						if (player.str < 500) {
 							printf("경기에서 패배했습니다...\n");
 							printf("체력이 1이 되었습니다.\n");
+							player.hp = 1;
 						}
 						else {
 							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
@@ -648,6 +679,7 @@ int main()
 						if (player.str < 800) {
 							printf("경기에서 패배했습니다...\n");
 							printf("체력이 1이 되었습니다.\n");
+							player.hp = 1;
 						}
 						else {
 							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
@@ -659,9 +691,10 @@ int main()
 						if (player.str < 1200) {
 							printf("경기에서 패배했습니다...\n");
 							printf("체력이 1이 되었습니다.\n");
+							player.hp = 1;
 						}
 						else {
-							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
+							printf("최종 경기에서 승리했습니다!\n");
 							boxcon++;
 						}
 

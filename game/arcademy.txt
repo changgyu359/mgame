@@ -1,18 +1,58 @@
- _________________________________________
-|                                         |
-|                                         |
-|                 [ 칠 판 ]                 |
-|                                         |
-|                                         |
-|_________________________________________|
-      O
-     /|\
-     / \
-  ┌───────┐   ┌───────┐   ┌───────┐   
-  │       │   │       │   │       │   
-  └───────┘   └───────┘   └───────┘   
-   _ _ _ _     _ _ _ _     _ _ _ _      
-  /       \   /       \   /       \     
-  |_______|   |_______|   |_______|     
-                                         
-_________________________________________
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                   jZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ                     
+                   ZB                                                         Zw                    
+                   Z9          WZZzWBBDwjywjDDDjwwBjwyDDDDDDB5Z               Z,                    
+                   Z9           wEZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   Z9            5ZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   ZE      5ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   Z9     zZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   ZE     ZDZ    5ZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   Z9     ZZZ  8 ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   ZE       ZD zZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   Z9    WZZz jEZ8ZZZZZZZZZ8ZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   ZE    Z Z Zy5Z5 ZZZZZZ   ZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   Z9   Z  E ,,   Z 9ZW  ZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   ZE   Z  Z   W  Z    wZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   ZE  8w ZEDW,   ZZZZZZZZZZZZZZZZZZZZZZZZZZZ Z               Z,                    
+                   ZE  yZ    ZZ yZ   ,B   w        WyjW  ,WWyyZ5              Z,                    
+                   ZE     Z8E8wzZyZ5ZEBDZZ9B9E998zBD5y5B9B55BDDZ              Z,                    
+                   ZE    Zw  j  , Z                                           Z,                    
+                   ZE    Z j W    jZ                                          Z,                    
+                   Z9   8B y   B w Z                                          Z,                    
+                   Z9   Z w    y 9 Z                                          Z,                    
+                   Z9   Z   y       Z                                         Z,                    
+                   Z9   ZzZBZ9ZZBD5BZz9Z  5EZZEz9ZE9E88Zw  Z8ZZ8EZZZZE9DEE    Z,                    
+                   Z9  BZ    wjjw w   BZ  Z ,ww   WW  w Z  Z      W,WWwWwwZ   Z,                    
+                   Z9  ZZZz98j,D8EzBBZZ   EZD95599EjBE8ZZ  DZZ9ZE8DzBj8zzZZ   Z,                    
+                   EB ZBjWyzEZZZE9DjD Zw ZD5yz59DDz99yjj5Z E8,yyyWBy988y,5z9Z Z,                    
+                   8BB                Z y                j jZ                ,Z                     
+                   8ZZZZZZZZZZZZZZZZZZZ ZZZZZZZZZZZZZZZZZZZwZZZZZZZZZZZZZZZZZZZ                     
+                   9 W              8,Z  B5              z BZz8            j  Z                     
+                   ZwDjZZZZZZZZZZZE5ZwZ  ZBZ9ZZZZZZZZZDZ Z  ZBZ5EEEZZEE9ZZEZ  Z,                    
+                   ZWB 5B8          ZjD  ZwZ           ZjZ  D5E          Zjz,,Z,                    
+                   ZWB EZ           ZZB  Z5Z           Z,Z  ZZZ           ZZ ,Z,                    
+                   ZWB,ZZZZZZZZZZZZzZZ8  ZEZZZZZZZZZZZZZjZ  ZZZ8ZZZZZZZZZ9ZZj,Z,                    
+                   ZWDy,5           ZZ   ZZ            WzZ   ZZ           5y ,Z,                    
+                   Zy8Z             ZZ   ZZ             ZZ   ZZ            j9yZ,                    
+                   ZB D             y     5             5    wW             D Z,                    
+                   Z9                                                         Z,                    
+                   E8                                                         Z,                    
+                   ZZ                                                         Zj                    
+                    ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ                     
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    

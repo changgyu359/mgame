@@ -34,7 +34,7 @@ void date(struct Data data)
 {
 	printf(" 날짜:%d\n", data.day);
 	if (data.day % 7 == 6) {
-		printf("!!내일은 집세 지불 날입니다!!");
+		printf("!!내일은 집세 지불 날입니다!!\n");
 	}
 }
 
@@ -138,7 +138,7 @@ int main()
 		printf("캐릭터의 근력,지력을 올려 캐릭터를 키우고 더 높은 목표를 향해 나아가세요.\n");
 		printf("단, 주의할 점이 두 가지 있습니다 .\n");
 		printf("1.체력이 0이되면 게임오버입니다 .\n");
-		printf("2.7일마다 집세를 10000원 걷습니다. 집세를 내지 못하면 게임오버입니다.\n");
+		printf("2.7일마다 집세를 5000원 걷습니다. 집세를 내지 못하면 게임오버입니다.\n");
 		printf("엔딩은 총 3가지가 있으니 재밌게 즐겨주시길 바랍니다.\n");
 		printf("준비가 되셨으면 아무키나 입력해주세요.\n");
 		scanf_s("%d", &choice);
@@ -147,6 +147,7 @@ int main()
 	while (1) {
 		system("cls");
 		if (player.hp <= 0) {
+			output("death1.TXT");
 			printf("체력이 없어서 사망했습니다. 게임오버.\n");
 			break;
 		}
@@ -154,14 +155,19 @@ int main()
 			day7 = 1;
 		}
 		if ((player.day % 7 == 0) & (day7 == 1)) {
-			if (player.money < 10000) {
+			if (player.money < 5000) {
+				output("death2.TXT");
 				printf("집세를 낼 돈이 부족하여 쫓겨났습니다. 게임오버.\n");
 				break;
 			}
 			else {
-				player.money -= 10000;
+				player.money -= 5000;
 				day7 = 0;
-				printf("집세 지불 날입니다. 집세 10000원을 지불합니다.\n");
+				output("zibul.TXT");
+				printf("집세 지불 날입니다. 집세 5000원을 지불합니다.\n");
+				printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
+				scanf_s("%d", &choice);
+				system("cls");;
 			}
 		}
 		if (boxcon == 5)
@@ -191,8 +197,8 @@ int main()
 			break;
 		}
 		if (player.day == 365 && end4 == 0) {
-			printf("당신은 이 게임에서 벌써 1년을 보냈습니다.\n"); \
-				printf("이 곳에서의 생활은 마음에 드시나요?\n");
+			printf("당신은 이 게임에서 벌써 1년을 보냈습니다.\n"); 
+			printf("이 곳에서의 생활은 마음에 드시나요?\n");
 			printf("히든 업적:게임에서의 1년.\n");
 			printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
 			end4++;
@@ -216,7 +222,7 @@ int main()
 		memset(message, 0, sizeof(message));
 
 		if (current == home) {
-			printf("1.잠자기-체력을 20회복하고 시간을 진행시킵니다.\n");
+			printf("1.잠자기-체력을 20회복하고 하루가 지납니다.\n");
 			printf("2.공부하기-지력이 2증가하고 체력이 5감소합니다.\n");
 			printf("3.운동하기-근력이 2증가하고 체력이 7감소합니다.\n");
 			printf("4.거리로 나가기.\n");
@@ -285,7 +291,7 @@ int main()
 		else if (current == conv) {
 			printf("1.삼각김밥-체력 10회복,1000원\n");
 			printf("2.음료수-체력 5회복,500원\n");
-			printf("3.알바하기-체력을 10소모하여 2000원을 법니다. 시간이 진행됩니다.\n");
+			printf("3.알바하기-체력을 10소모하여 2000원을 법니다. 하루가 지납니다.\n");
 			printf("4.거리로 나가기.\n");
 			scanf_s("%d", &choice);
 
@@ -422,9 +428,9 @@ int main()
 			}
 		}
 		else if (current == arcademy) {
-			printf("1.학원 하급반-체력을 소모하여 지력을 증가시킵니다.\n");
-			printf("2.학원 상급반-지력 100이상, 체력을 소모하여 지력을 증가시킵니다. 시간이 진행됩니다.\n");
-			printf("3.학원 알바-지력 200필요, 체력을 소모하여 돈을 법니다. 시간이 진행됩니다.\n");
+			printf("1.학원 하급반-체력을 10소모하여 지력을 5증가시킵니다.\n");
+			printf("2.학원 상급반-지력 100이상, 체력을 10소모하여 지력을 10증가시킵니다. 하루가 지납니다.\n");
+			printf("3.학원 알바-체력을 10소모하여 4000원을 법니다. 하루가 지납니다.\n");
 			printf("4.대로변으로 나가기.\n");
 			scanf_s("%d", &choice);
 
@@ -449,18 +455,12 @@ int main()
 
 			}
 			else if (choice == 3) {
-				if (player.intel < 200)
-				{
-					snprintf(message[0], LENGTH, "지력이 부족합니다.");
-				}
-				else
-				{
-					player.money += 5000;
+					player.money += 3000;
 					player.hp -= 10;
 					player.day++;
-					snprintf(message[0], LENGTH, "학원 알바를 하여 돈을 5000원 벌었습니다.");
+					snprintf(message[0], LENGTH, "학원 알바를 하여 돈을 4000원 벌었습니다.");
 					snprintf(message[1], LENGTH, "하루가 지났습니다.");
-				}
+				
 			}
 			else if (choice == 4) {
 				current = burnart;
@@ -472,9 +472,9 @@ int main()
 			}
 		}
 		else if (current == gym) {
-			printf("1.아령 들기-체력을 소모하여 근력을 증가시킵니다.\n");
-			printf("2.스쿼트 하기-근력 100이상, 체력을 소모하여 근력을 10 증가시킵니다.\n");
-			printf("3.데드 리프트-근력 200이상, 체력을 소모하여 근력을 20 증가시킵니다.\n");
+			printf("1.아령 들기-체력을 10 소모하여 근력을 4 증가시킵니다.\n");
+			printf("2.스쿼트 하기-근력 100이상, 체력을 20소모하여 근력을 10 증가시킵니다.\n");
+			printf("3.데드 리프트-근력 200이상, 체력을 30소모하여 근력을 20 증가시킵니다.\n");
 			printf("4.대로변으로 나가기.\n");
 			scanf_s("%d", &choice);
 
@@ -517,41 +517,41 @@ int main()
 			}
 		}
 		else if (current == food) {
-			printf("1.제육덮밥 주문하기-체력 60회복,7000원\n");
-			printf("2.모둠 돈가스 주문하기-체력 100회복,13000원\n");
-			printf("3.LA갈비 주문하기-체력 200회복,30000원\n");
+			printf("1.제육덮밥 주문하기-체력 60회복,5000원\n");
+			printf("2.모둠 돈가스 주문하기-체력 130회복,10000원\n");
+			printf("3.LA갈비 주문하기-체력 300회복,20000원\n");
 			printf("4.대로변으로 나가기.\n");
 			scanf_s("%d", &choice);
 
 			if (choice == 1) {
-				if (player.money < 7000) {
+				if (player.money < 5000) {
 					snprintf(message[0], LENGTH, "돈이 부족합니다.");
 				}
 				else {
-					player.money -= 7000;
+					player.money -= 5000;
 					player.hp += 60;
 					snprintf(message[0], LENGTH, "제육덮밥을 먹어 체력을 60 회복했습니다.");
 				}
 
 			}
 			else if (choice == 2) {
-				if (player.money < 13000) {
+				if (player.money < 10000) {
 					snprintf(message[0], LENGTH, "돈이 부족합니다.");
 				}
 				else {
-					player.money -= 13000;
-					player.hp += 100;
+					player.money -= 10000;
+					player.hp += 130;
 					snprintf(message[0], LENGTH, "돈가스를 먹어 체력을 100 회복했습니다.");
 				}
 
 			}
 			else if (choice == 3) {
-				if (player.money < 30000) {
+				if (player.money < 20000) {
 					snprintf(message[0], LENGTH, "돈이 부족합니다.");
 				}
 				else {
-					player.money -= 30000;
-					player.hp += 200;
+					player.money -= 20000;
+					player.hp += 300;
 					snprintf(message[0], LENGTH, "LA갈비를 먹어 체력을 200 회복했습니다.");
 				}
 
@@ -566,8 +566,8 @@ int main()
 			}
 		}
 		else if (current == inducom) {
-			printf("1.부품 제작 알바-근력50,지력50이상, 체력을 15소모하여 4000원을 법니다.\n");
-			printf("2.상하차 알바-근력 200이상, 체력을 50소모하여 10000원을 법니다.\n");
+			printf("1.부품 제작 알바-근력50,지력50이상, 체력을 20소모하여 6000원을 법니다. 하루가 지납니다.\n");
+			printf("2.상하차 알바-근력 200이상, 체력을 50소모하여 20000원을 법니다. 하루가 지납니다.\n");
 			printf("3.연구소로 이동하기(지력 500이상 입장가능).\n");
 			printf("4.대로변으로 이동하기.\n");
 			scanf_s("%d", &choice);
@@ -579,9 +579,11 @@ int main()
 				}
 				else
 				{
+					player.day++;
 					player.hp -= 15;
 					player.money += 4000;
 					snprintf(message[0], LENGTH, "일을 하여 돈을 4000원 벌었습니다.");
+					snprintf(message[1], LENGTH, "하루가 지났습니다.");
 				}
 
 			}
@@ -592,9 +594,11 @@ int main()
 				}
 				else
 				{
+					player.day++;
 					player.hp -= 50;
 					player.money += 10000;
 					snprintf(message[0], LENGTH, "일을 하여 돈을 10000원 벌었습니다.");
+					snprintf(message[1], LENGTH, "하루가 지났습니다.");
 				}
 			}
 			else if (choice == 3) {
@@ -618,24 +622,25 @@ int main()
 			}
 		}
 		else if (current == research) {
-			printf("1.돈이 되는 연구하기-체력을 30 소모하여 진행도를 올립니다.\n");
-			printf("진행도를 4까지 달성하면 20000원을 얻습니다./ 현재 진행도:%d\n", monrun);
-			printf("2.노벨상을 탈 연구하기-체력을 100소모하여 진행도를 올립니다.\n");
-			printf("진행도를 20까지 올리면.../ 현재 진행도:%d\n", endrun);
+			printf("1.돈이 되는 연구하기-체력을 30 소모하여 진행도를 올립니다. 하루가 지납니다. 진행도를 4까지 달성하면 60000원을 얻습니다. / 현재 진행도 : % d\n", monrun);
+			printf("2.노벨상을 탈 연구하기-체력을 100소모하여 진행도를 올립니다. 하루가 지납니다. 진행도를 20까지 올리면.../ 현재 진행도:%d\n", endrun);
 			printf("3.산업단지로 이동하기.\n");
 			scanf_s("%d", &choice);
 
 			if (choice == 1) {
 				player.hp -= 30;
+				player.day++;
 				if (monrun < 3)
 				{
 					snprintf(message[0], LENGTH, "돈이 되는 연구를 했습니다.");
 					snprintf(message[1], LENGTH, "현재 진행도: %d", monrun + 1);
+					snprintf(message[2], LENGTH, "하루가 지났습니다.");
 					monrun++;
 				}
 				else
 				{
 					snprintf(message[0], LENGTH, "연구 성과로 돈을 20000원 벌었습니다.");
+					snprintf(message[1], LENGTH, "하루가 지났습니다.");
 					monrun = 0;
 				}
 
@@ -643,6 +648,7 @@ int main()
 			else if (choice == 2) {
 				snprintf(message[0], LENGTH, "노벨상을 탈 연구를 했습니다.");
 				snprintf(message[1], LENGTH, "현재 진행도: %d", endrun + 1);
+				snprintf(message[2], LENGTH, "하루가 지났습니다.");
 				player.hp -= 100;
 				endrun++;
 			}
@@ -676,6 +682,7 @@ int main()
 					snprintf(message[4], LENGTH, "다만 경기에서 질 경우 조금 심한 부상을 입을테니 막무가내로 시도하지는 말게나.");
 					snprintf(message[5], LENGTH, "경기에서 믿을 건 자네, 특히 자네의 근력일세.");
 					snprintf(message[6], LENGTH, "자네의 그 근력으로 세계를 제패해보게나!");
+					snprintf(message[7], LENGTH, "아 그리고 대회 결과에 상관없이 날짜가 진행되니 그것도 잊지 말고.");
 				}
 				else if (choice == 2) {
 					player.hp -= 70;
@@ -769,6 +776,7 @@ int main()
 						}
 
 					}
+					player.day++;
 				}
 				else
 				{

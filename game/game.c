@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SIZE 5000
+
+#define SIZE 6000
 #define LINES 8
 #define LENGTH 256
 
@@ -52,7 +53,11 @@ void output(const char* filename)
 {
 	FILE* file = fopen(filename, "r");
 
-	char buffer[SIZE] = { 0, };
+	char* buffer = malloc(SIZE);
+
+	if (buffer) {
+		memset(buffer, 0, SIZE); // 메모리 0으로 초기화
+	}
 
 	fread(buffer, 1, SIZE, file);
 
@@ -60,7 +65,11 @@ void output(const char* filename)
 
 	fclose(file);
 
+	free(buffer);
+
+	
 }
+
 
 
 void locate(enum Location loc)
@@ -136,10 +145,11 @@ int main()
 	else if (choice == 2) {
 		printf("이 게임은 자신의 캐릭터를 키우면 되는 간단한 게임입니다.\n");
 		printf("캐릭터의 근력,지력을 올려 캐릭터를 키우고 더 높은 목표를 향해 나아가세요.\n");
-		printf("단, 주의할 점이 두 가지 있습니다 .\n");
-		printf("1.체력이 0이되면 게임오버입니다 .\n");
+		printf("단, 주의할 점이 두 가지 있습니다.\n");
+		printf("1.체력이 0이되면 게임오버입니다.\n");
 		printf("2.7일마다 집세를 5000원 걷습니다. 집세를 내지 못하면 게임오버입니다.\n");
 		printf("엔딩은 총 3가지가 있으니 재밌게 즐겨주시길 바랍니다.\n");
+		printf("*숫자 외에 다른 키를 입력하지 마세요.\n");
 		printf("준비가 되셨으면 아무키나 입력해주세요.\n");
 		scanf_s("%d", &choice);
 		
@@ -179,7 +189,7 @@ int main()
 			break;
 		}
 
-		if (player.money == 1000000)
+		if (player.money == 3000000)
 		{
 			output("end2.TXT");
 			printf("당신은 엄청난 돈을 벌어 백만장자가 되었습니다.\n");
@@ -248,11 +258,12 @@ int main()
 				current = street;
 				snprintf(message[0], LENGTH, "거리로 나갑니다.");
 			}
-			else if (choice == 5) {
+			else if (choice == 365) {
+				player.hp = 10000;
 				player.str = 10000;
 				player.intel = 10000;
 				player.money = 10000;
-				snprintf(message[0], LENGTH, "디버깅용치트.");
+				snprintf(message[0], LENGTH, "치트키 발동!");
 			}
 			else
 
@@ -334,7 +345,7 @@ int main()
 			}
 		}
 		else if (current == park) {
-			if ((player.str >= 200) && (coach_met == 0)) {
+			if ((player.str >= 400) && (coach_met == 0)) {
 				printf("=================공원을 걷던 당신에게 누군가 다가왔습니다.=================\n");
 				printf("자네 몸이 아주 좋군, 아주 훌륭한 원석이야!\n");
 				printf("이런, 내 소개가 늦었군. 나는 복싱 코치라네.\n");
@@ -349,14 +360,14 @@ int main()
 				date(player);
 				stat(player);
 			}
-			printf("1.벤치에 앉기.- 체력을 5 회복합니다. 하루에 한 번 가능.\n");
+			printf("1.벤치에 앉기.- 체력을 10 회복합니다. 하루에 한 번 가능.\n");
 			printf("2.거리로 이동하기.\n");
 			scanf_s("%d", &choice);
 
 			if (choice == 1) {
 				if (bench != player.day)
 				{
-					player.hp += 5;
+					player.hp += 10;
 					bench = player.day;
 					snprintf(message[0], LENGTH, "벤치에 앉아서 조금 쉬었습니다.");
 				}
@@ -455,7 +466,7 @@ int main()
 
 			}
 			else if (choice == 3) {
-					player.money += 3000;
+					player.money += 4000;
 					player.hp -= 10;
 					player.day++;
 					snprintf(message[0], LENGTH, "학원 알바를 하여 돈을 4000원 벌었습니다.");
@@ -581,8 +592,8 @@ int main()
 				{
 					player.day++;
 					player.hp -= 15;
-					player.money += 4000;
-					snprintf(message[0], LENGTH, "일을 하여 돈을 4000원 벌었습니다.");
+					player.money += 6000;
+					snprintf(message[0], LENGTH, "일을 하여 돈을 6000원 벌었습니다.");
 					snprintf(message[1], LENGTH, "하루가 지났습니다.");
 				}
 
@@ -596,8 +607,8 @@ int main()
 				{
 					player.day++;
 					player.hp -= 50;
-					player.money += 10000;
-					snprintf(message[0], LENGTH, "일을 하여 돈을 10000원 벌었습니다.");
+					player.money += 20000;
+					snprintf(message[0], LENGTH, "일을 하여 돈을 20000원 벌었습니다.");
 					snprintf(message[1], LENGTH, "하루가 지났습니다.");
 				}
 			}
@@ -639,9 +650,10 @@ int main()
 				}
 				else
 				{
-					snprintf(message[0], LENGTH, "연구 성과로 돈을 20000원 벌었습니다.");
+					snprintf(message[0], LENGTH, "연구 성과로 돈을 60000원 벌었습니다.");
 					snprintf(message[1], LENGTH, "하루가 지났습니다.");
 					monrun = 0;
+					player.money += 60000;
 				}
 
 			}
@@ -649,6 +661,7 @@ int main()
 				snprintf(message[0], LENGTH, "노벨상을 탈 연구를 했습니다.");
 				snprintf(message[1], LENGTH, "현재 진행도: %d", endrun + 1);
 				snprintf(message[2], LENGTH, "하루가 지났습니다.");
+				player.day++;
 				player.hp -= 100;
 				endrun++;
 			}
@@ -662,6 +675,7 @@ int main()
 			}
 		}
 		else if (current == boxcen) {
+
 
 			printf("1.코치와 대화하기\n");
 			printf("2.대로변으로 이동하기.\n");
@@ -697,26 +711,6 @@ int main()
 					scanf_s("%d", &choice);
 
 					if (boxcon == 1) {
-						if (player.str < 300) {
-							system("cls");
-							output("defeat.TXT");
-							printf("경기에서 패배했습니다...\n");
-							printf("체력이 1이 되었습니다.\n");
-							player.hp = 1;
-							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
-							scanf_s("%d", &choice);
-						}
-						else {
-							system("cls");
-							output("win.TXT");
-							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
-							boxcon++;
-							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
-							scanf_s("%d", &choice);
-						}
-
-					}
-					else if (boxcon == 2) {
 						if (player.str < 500) {
 							system("cls");
 							output("defeat.TXT");
@@ -736,8 +730,28 @@ int main()
 						}
 
 					}
+					else if (boxcon == 2) {
+						if (player.str < 700) {
+							system("cls");
+							output("defeat.TXT");
+							printf("경기에서 패배했습니다...\n");
+							printf("체력이 1이 되었습니다.\n");
+							player.hp = 1;
+							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
+							scanf_s("%d", &choice);
+						}
+						else {
+							system("cls");
+							output("win.TXT");
+							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
+							boxcon++;
+							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
+							scanf_s("%d", &choice);
+						}
+
+					}
 					else if (boxcon == 3) {
-						if (player.str < 800) {
+						if (player.str < 1000) {
 							system("cls");
 							output("defeat.TXT");
 							printf("경기에서 패배했습니다...\n");

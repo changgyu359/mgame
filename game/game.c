@@ -552,7 +552,7 @@ int main()
 				else {
 					player.money -= 10000;
 					player.hp += 130;
-					snprintf(message[0], LENGTH, "돈가스를 먹어 체력을 100 회복했습니다.");
+					snprintf(message[0], LENGTH, "돈가스를 먹어 체력을 130 회복했습니다.");
 				}
 
 			}
@@ -563,7 +563,7 @@ int main()
 				else {
 					player.money -= 20000;
 					player.hp += 300;
-					snprintf(message[0], LENGTH, "LA갈비를 먹어 체력을 200 회복했습니다.");
+					snprintf(message[0], LENGTH, "LA갈비를 먹어 체력을 300 회복했습니다.");
 				}
 
 			}
@@ -591,7 +591,7 @@ int main()
 				else
 				{
 					player.day++;
-					player.hp -= 15;
+					player.hp -= 20;
 					player.money += 6000;
 					snprintf(message[0], LENGTH, "일을 하여 돈을 6000원 벌었습니다.");
 					snprintf(message[1], LENGTH, "하루가 지났습니다.");
@@ -723,8 +723,10 @@ int main()
 						else {
 							system("cls");
 							output("win.TXT");
-							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
+							printf("첫번째 경기에서 승리했습니다!\n");
 							boxcon++;
+							printf("상금으로 20000원을 획득했습니다.\n");
+							player.money += 20000;
 							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
 							scanf_s("%d", &choice);
 						}
@@ -743,8 +745,10 @@ int main()
 						else {
 							system("cls");
 							output("win.TXT");
-							printf("%d번째 경기에서 승리했습니다!\n", boxcon);
+							printf("두번째 경기에서 승리했습니다!\n");
 							boxcon++;
+							printf("상금으로 50000원을 획득했습니다.\n");
+							player.money += 50000;
 							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
 							scanf_s("%d", &choice);
 						}
@@ -763,8 +767,10 @@ int main()
 						else {
 							system("cls");
 							output("win.TXT");
-							printf(message[0], LENGTH, "%d번째 경기에서 승리했습니다!\n", boxcon);
+							printf("세번째 경기에서 승리했습니다!\n");
 							boxcon++;
+							printf("상금으로 100000원을 획득했습니다.\n");
+							player.money += 100000;
 							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
 							scanf_s("%d", &choice);
 						}
@@ -783,7 +789,7 @@ int main()
 						else {
 							system("cls");
 							output("win.TXT");
-							printf(message[0], LENGTH, "최종 경기에서 승리했습니다!\n");
+							printf("최종 경기에서 승리했습니다!\n");
 							boxcon++;
 							printf("계속 진행하려면 아무 글자나 입력해주세요.\n");
 							scanf_s("%d", &choice);
@@ -812,4 +818,3 @@ int main()
 	return 0;
 }
 
-// 연구소 진행 이미지까지 필요할까?

@@ -259,10 +259,10 @@ int main()
 				snprintf(message[0], LENGTH, "거리로 나갑니다.");
 			}
 			else if (choice == 365) {
-				player.hp = 10000;
-				player.str = 10000;
-				player.intel = 10000;
-				player.money = 10000;
+				player.hp += 10000;
+				player.str += 10000;
+				player.intel += 10000;
+				player.money += 10000;
 				snprintf(message[0], LENGTH, "치트키 발동!");
 			}
 			else
